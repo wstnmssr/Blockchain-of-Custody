@@ -26,6 +26,8 @@ contract ChainOfCustody{
     
     mapping (uint => address) evidence_holder;
     
+    event NewTransaction(uint tracking_number, string purpose);
+    
     uint number_of_items = 0;
     address internal forensic_agent;
     uint creation_time; //UNIX Timestamp 
@@ -76,6 +78,7 @@ contract Case is ChainOfCustody{
         evidence_holder[t.get_tracking_number()] = msg.sender;
         t.check_out(_personnel, _purpose);
         transactions.push(t);
+        emit NewTransaction(t.get_tracking_number(), _purpose);
         return t.get_tracking_number();
     }
     
@@ -87,5 +90,24 @@ contract Case is ChainOfCustody{
             }
             break;
         }
-    } 
+    }
+    
+    //getters
+    
+    function item_count() public view returns(uint){
+        return number_of_items;
+    }
+    
+    function is_closed_transaction(Transaction _t) public view returns(bool){
+        return _t.get_status();
+    }
+    
+    function copy_count() public view returns(uint){
+        return data_copies.length;
+    }
+    
+    function transaction_count() public view returns(uint){
+        return transactions.length;
+    }
+    
 }
