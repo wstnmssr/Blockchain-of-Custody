@@ -65,6 +65,7 @@ contract Case is ChainOfCustody{
                                     _model_number, 
                                     _serial_number, 
                                     _content_description));
+        number_of_items++;
     }
     
     function make_a_copy(string memory _method, uint _hash) only_owner public{
