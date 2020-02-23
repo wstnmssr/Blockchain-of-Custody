@@ -1,5 +1,5 @@
 # Blockchain-of-Custody
-##2020 HackCU project at the intersection of digital forensics and the backbone of Blockchain
+## 2020 HackCU project at the intersection of digital forensics and the backbone of Blockchain
 
 *Initiated by Westin Musser at HackCU 2020 - Feb.23-4*
 
